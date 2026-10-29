@@ -37,11 +37,13 @@ export function apply(ctx: Context) {
   // the model. ToolCallId brands the correlation id a provider would issue.
   void (async () => {
     const result = await ctx.tools.execute({
-      calls: [{
-        type: 'tool-call', id: brandString<ToolCallId>('demo-1'),
-        name: 'greet', arguments: JSON.stringify({ name: 'Cordis' }),
-      }],
       signal: new AbortController().signal,
+      calls: [{
+        type: 'tool-call',
+        id: brandString<ToolCallId>('demo-1'),
+        name: 'greet',
+        arguments: JSON.stringify({ name: 'Cordis' }),
+      }],
     })
     console.log('tool replied:', JSON.stringify(result.results[0]?.result.content))
   })()
@@ -78,6 +80,7 @@ The `import type {} from '@deepseek-ai/dsh-tools'` line pulls in the package's d
 ```yaml
 - name: '@deepseek-ai/dsh-system-prompt'
 - name: '@deepseek-ai/dsh-tools'
+- name: '@deepseek-ai/dsh-tool-executor-native'
 - name: './tool-logger.ts'
 - name: './greet-tool.ts'
 ```
