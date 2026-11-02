@@ -78,6 +78,7 @@ export function apply(ctx: Context) {
 ```yaml
 - name: '@deepseek-ai/dsh-system-prompt'
 - name: '@deepseek-ai/dsh-tools'
+- name: '@deepseek-ai/dsh-tool-executor-native'
 - name: './tool-logger.ts'
 - name: './greet-tool.ts'
 ```
